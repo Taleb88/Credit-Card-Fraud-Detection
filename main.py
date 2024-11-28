@@ -10,8 +10,10 @@ df = pd.read_csv('creditcard.csv')
 sorted_column = df.sort_values(['Amount'], ascending=False)
 top_20_amount = sorted_column.head(20)
 
+top_20_amount = top_20_amount.rename({'Time': 'Entry'}, axis='columns')
+
 top_20_amount.to_csv('top_20_amount.csv', index=False)
 
 # creating a pie chart based on top 20 amount
-plt.pie(top_20_amount['Amount'], labels=top_20_amount['Amount'])
-plt.show()
+#x_axis = top_20_amount['Amount']
+#y_axis = top_20_amount['Amount']
