@@ -14,15 +14,12 @@ top_20_amount = top_20_amount.rename({'Time': 'Case'}, axis='columns')
 
 top_20_amount.to_csv('top_20_amount.csv', index=False)
 
-# creating a bar chart via matplotlib
-x_axis = top_20_amount['Case']
-y_axis = top_20_amount['Amount']
+# creating a pie chart via matplotlib
+top_20_case_data = top_20_amount['Case']
+top_20_amount_data = top_20_amount['Amount']
 
-plt.bar(x_axis, y_axis)
+plt.pie(top_20_amount_data, labels=top_20_amount_data)
 
 plt.title('Amounts per Case')
-
-plt.xlabel('Entry')
-plt.ylabel('Amount')
 
 plt.show()
