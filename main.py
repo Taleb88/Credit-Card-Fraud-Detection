@@ -46,6 +46,18 @@ own_car_age = application_data_df.iloc[:,21]
 application_data_condensed_df['OWN_CAR_AGE'] = own_car_age.copy()
 occupation_type = application_data_df.iloc[:,28]
 application_data_condensed_df['OCCUPATION_TYPE'] = occupation_type.copy()
+cnt_fam_members = application_data_df.iloc[:,29]
+application_data_condensed_df['CNT_FAM_MEMBERS'] = cnt_fam_members.copy()
+region_rating_client = application_data_df.iloc[:,30]
+application_data_condensed_df['REGION_RATING_CLIENT'] = region_rating_client.copy()
+region_rating_client_with_city = application_data_df.iloc[:,31]
+application_data_condensed_df['REGION_RATING_CLIENT_W_CITY'] = region_rating_client_with_city.copy()
+weekly_approval_process_start = application_data_df.iloc[:,32]
+application_data_condensed_df['WEEKDAY_APPR_PROCESS_START'] = weekly_approval_process_start.copy()
+hour_approval_process_start = application_data_df.iloc[:,33]
+application_data_condensed_df['HOUR_APPR_PROCESS_START'] = hour_approval_process_start.copy()
+organization_type = application_data_df.iloc[:,40]
+application_data_condensed_df['ORGANIZATION_TYPE'] = organization_type.copy()
 
 
 (application_data_condensed_df.
