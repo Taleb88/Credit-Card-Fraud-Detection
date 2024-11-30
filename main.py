@@ -87,7 +87,7 @@ for x in application_data_condensed_df['NAME_INCOME_TYPE']:
             raise ValueError
     except:
         status.append('Invalid Value')
-
+# values added to newly created FRAUD_RISK column
 application_data_condensed_df['FRAUD_RISK'] = status
 
 application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
