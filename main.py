@@ -92,7 +92,7 @@ application_data_condensed_df['FRAUD_RISK'] = status
 
 application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
                                        index=False)
-
+# conditional formatting added to FRAUD_RISK column in application_data_condensed_df
 def risk_color(risk_level):
     if risk_level == 'High Risk':
         return ('background-color: red; '
