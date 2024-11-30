@@ -67,17 +67,29 @@ application_data_condensed_df['ORGANIZATION_TYPE'] = organization_type.copy()
 application_data_condensed_df['FRAUD_RISK'] = [''] * len(application_data_condensed_df)
 
 application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
-                                       index=False)
+                                      index=False)
+# if NAME_INCOME_TYPE is of a certain value, the applicant would be classified as low risk or high risk
 status = []
 for x in application_data_condensed_df['NAME_INCOME_TYPE']:
     try:
-        if x == 'Unemployed':
+        if (x == 'Businessman'
+                or x == 'Commercial associate'
+                or x == 'Maternity leave'
+                or x == 'Pensioner'
+                or x == 'State servant'
+                or x == 'Student'
+                or x == 'Working'):
+            status.append('Low Risk')
+        elif x == 'Unemployed':
             status.append('High Risk')
         else:
-            status.append('Low Risk')
+            status.append('Risk = Pending')
             raise ValueError
     except:
-        status.append('Value invalid.')
+        status.append('Invalid Value')
 
 application_data_condensed_df['FRAUD_RISK'] = status
-application_data_condensed_df.to_excel('application_data_condensed_df.xlsx', index=False)
+
+application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
+                                       index=False)
+
