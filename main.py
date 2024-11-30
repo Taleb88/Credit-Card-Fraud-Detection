@@ -93,3 +93,21 @@ application_data_condensed_df['FRAUD_RISK'] = status
 application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
                                        index=False)
 
+def risk_color(risk_level):
+    if risk_level == 'High Risk':
+        return ('background-color: red; '
+                'font-weight: bold; '
+                'color: black')
+    elif risk_level == 'Low Risk':
+        return 'background-color: yellow'
+    else:
+        return ''
+
+application_data_condensed_df = (
+    application_data_condensed_df.
+    style.
+    applymap(risk_color, subset=['FRAUD_RISK'])
+)
+
+application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
+                                       index=False)
