@@ -112,6 +112,41 @@ application_data_condensed_unemployed_applicants_df.to_excel(
     'application_data_condensed_unemployed_applicants_df.xlsx',
     index=False)
 
+# businessman applicants only
+def businessman_applicants(df):
+    try:
+        return df[df['NAME_INCOME_TYPE'] == 'Businessman']
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot filter rows')
+
+application_data_condensed_businessman_applicants_df = \
+    businessman_applicants(application_data_condensed_df)
+
+application_data_condensed_businessman_applicants_df.to_excel(
+    'application_data_condensed_businessman_applicants_df.xlsx',
+    index=False)
+
+# commercial associate applicants only
+def commercial_associate_applicants(df):
+    try:
+        return df[df['NAME_INCOME_TYPE'] == 'Commercial Associate']
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot filter rows')
+
+application_data_condensed_commercial_associate_applicants_df = \
+    commercial_associate_applicants(application_data_condensed_df)
+
+application_data_condensed_commercial_associate_applicants_df.to_excel(
+    'application_data_condensed_commercial_associate_applicants_df.xlsx',
+    index=False)
+
+
+# +===================+
+# charts to be developed here
+# +===================+
+
 
 # +===================+
 # conditional formatting implemented based on certain conditions
