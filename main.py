@@ -142,6 +142,36 @@ application_data_condensed_commercial_associate_applicants_df.to_excel(
     'application_data_condensed_commercial_associate_applicants_df.xlsx',
     index=False)
 
+# maternity leave applicants only
+def maternity_leave_applicants(df):
+    try:
+        return df[df['NAME_INCOME_TYPE'] == 'Maternity leave']
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot filter rows')
+
+application_data_condensed_maternity_leave_applicants_df = \
+    maternity_leave_applicants(application_data_condensed_df)
+
+application_data_condensed_maternity_leave_applicants_df.to_excel(
+    'application_data_condensed_maternity_leave_applicants_df.xlsx',
+    index=False)
+
+# pensioner applicants only
+def pensioner_applicants(df):
+    try:
+        return df[df['NAME_INCOME_TYPE'] == 'Pensioner']
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot filter rows')
+
+application_data_condensed_pensioner_applicants_df = \
+    maternity_leave_applicants(application_data_condensed_df)
+
+application_data_condensed_pensioner_applicants_df.to_excel(
+    'application_data_condensed_pensioner_applicants_df.xlsx',
+    index=False)
+
 
 # +===================+
 # charts to be developed here
