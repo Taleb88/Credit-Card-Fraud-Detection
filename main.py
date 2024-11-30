@@ -92,22 +92,48 @@ application_data_condensed_df['FRAUD_RISK'] = status
 
 application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
                                        index=False)
-# conditional formatting added to FRAUD_RISK column in application_data_condensed_df
-def risk_color(risk_level):
-    if risk_level == 'High Risk':
-        return ('background-color: red; '
-                'font-weight: bold; '
-                'color: black')
-    elif risk_level == 'Low Risk':
-        return 'background-color: yellow'
-    else:
-        return ''
 
-application_data_condensed_df = (
+# +===================+
+# filtering based on certain conditions
+# +===================+
+
+# unemployed applicants only
+def unemployed_applicants(df):
+    try:
+        return df[df['NAME_INCOME_TYPE'] == 'Unemployed']
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot filter rows')
+
+application_data_condensed_unemployed_applicants_df = \
+    unemployed_applicants(application_data_condensed_df)
+
+application_data_condensed_unemployed_applicants_df.to_excel(
+    'application_data_condensed_unemployed_applicants_df.xlsx',
+    index=False)
+
+
+# +===================+
+# conditional formatting implemented based on certain conditions
+# +===================+
+def risk_color(risk_level):
+    try:
+        if risk_level == 'High Risk':
+            return ('background-color: red; '
+                    'font-weight: bold; '
+                    'color: black')
+        elif risk_level == 'Low Risk':
+            return 'background-color: yellow'
+        else:
+            return ''
+    except:
+        print('Error - Cannot fill in background color of cells')
+
+application_data_condensed_styled_df = (
     application_data_condensed_df.
     style.
     applymap(risk_color, subset=['FRAUD_RISK'])
 )
 
-application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
+application_data_condensed_styled_df.to_excel('application_data_condensed_df.xlsx',
                                        index=False)
