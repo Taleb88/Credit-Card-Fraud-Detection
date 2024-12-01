@@ -224,13 +224,24 @@ application_data_condensed_working_applicants_df.to_excel(
 
 
 # +===================+
+# pivot tables
+# +===================+
+unemployed_applicants_annuity_avg_df = \
+    pd.pivot_table(application_data_condensed_unemployed_applicants_df,
+                                                index= "CODE_GENDER",
+                                                values='AMT_ANNUITY',
+                                                columns='NAME_FAMILY_STATUS',
+                                                aggfunc='mean'
+                                                )
+
+unemployed_applicants_annuity_avg_df.\
+    to_excel('unemployed_applicants_annuity_avg_pivot_table.xlsx')
+
+# +===================+
 # charts to be developed here
 # +===================+
-'''
-file = pd.read_excel('application_data_condensed_unemployed_applicants_df.xlsx')
-plt.pie(file['CNT_CHILDREN'], labels=file['CNT_CHILDREN'])
-plt.show()
-'''
+# columns (keys)
+# column values (values)
 
 
 
