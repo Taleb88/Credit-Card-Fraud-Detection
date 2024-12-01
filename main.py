@@ -166,10 +166,55 @@ def pensioner_applicants(df):
               f'cannot filter rows')
 
 application_data_condensed_pensioner_applicants_df = \
-    maternity_leave_applicants(application_data_condensed_df)
+    pensioner_applicants(application_data_condensed_df)
 
 application_data_condensed_pensioner_applicants_df.to_excel(
     'application_data_condensed_pensioner_applicants_df.xlsx',
+    index=False)
+
+# state servant applicants only
+def state_servant_applicants(df):
+    try:
+        return df[df['NAME_INCOME_TYPE'] == 'State servant']
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot filter rows')
+
+application_data_condensed_state_servant_applicants_df = \
+    state_servant_applicants(application_data_condensed_df)
+
+application_data_condensed_state_servant_applicants_df.to_excel(
+    'application_data_condensed_state_servant_applicants_df.xlsx',
+    index=False)
+
+# student applicants only
+def student_applicants(df):
+    try:
+        return df[df['NAME_INCOME_TYPE'] == 'Student']
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot filter rows')
+
+application_data_condensed_student_applicants_df = \
+    student_applicants(application_data_condensed_df)
+
+application_data_condensed_student_applicants_df.to_excel(
+    'application_data_condensed_student_applicants_df.xlsx',
+    index=False)
+
+# working applicants only
+def working_applicants(df):
+    try:
+        return df[df['NAME_INCOME_TYPE'] == 'Working']
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot filter rows')
+
+application_data_condensed_working_applicants_df = \
+    working_applicants(application_data_condensed_df)
+
+application_data_condensed_working_applicants_df.to_excel(
+    'application_data_condensed_working_applicants_df.xlsx',
     index=False)
 
 
