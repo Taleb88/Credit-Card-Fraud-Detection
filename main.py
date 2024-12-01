@@ -68,7 +68,11 @@ application_data_condensed_df['FRAUD_RISK'] = [''] * len(application_data_conden
 
 application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
                                       index=False)
-# if NAME_INCOME_TYPE is of a certain value, the applicant would be classified as low risk or high risk
+
+# +===================+
+# if NAME_INCOME_TYPE is of a certain value, the applicant would be
+#   classified as low risk or high risk
+# +===================+
 status = [] # array reps col values, initially empty but filled in once conditions are met below
 for x in application_data_condensed_df['NAME_INCOME_TYPE']:
     try:
