@@ -81,9 +81,10 @@ for x in application_data_condensed_df['NAME_INCOME_TYPE']:
                 or x == 'Maternity leave'
                 or x == 'Pensioner'
                 or x == 'State servant'
-                or x == 'Student'
                 or x == 'Working'):
             status.append('Low Risk')
+        elif x == 'Student':
+            status.append('Medium Risk')
         elif x == 'Unemployed':
             status.append('High Risk')
         else:
@@ -225,6 +226,12 @@ application_data_condensed_working_applicants_df.to_excel(
 # +===================+
 # charts to be developed here
 # +===================+
+'''
+file = pd.read_excel('application_data_condensed_unemployed_applicants_df.xlsx')
+plt.pie(file['CNT_CHILDREN'], labels=file['CNT_CHILDREN'])
+plt.show()
+'''
+
 
 
 # +===================+
@@ -236,10 +243,12 @@ def risk_color(risk_level):
             return ('background-color: red; '
                     'font-weight: bold; '
                     'color: black')
-        elif risk_level == 'Low Risk':
+        elif risk_level == 'Medium Risk':
             return 'background-color: yellow'
+        elif risk_level == 'Low Risk':
+            return 'background-color: #00FF7F'
         else:
-            return ''
+            return 'background-color: #FFFFFF'
     except:
         print('Error - Cannot fill in background color of cells')
 
