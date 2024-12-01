@@ -226,6 +226,7 @@ application_data_condensed_working_applicants_df.to_excel(
 # +===================+
 # pivot tables
 # +===================+
+# unemployed applicants annuity avg pivot table
 unemployed_applicants_annuity_avg_df = \
     pd.pivot_table(application_data_condensed_unemployed_applicants_df,
                                                 index= "CODE_GENDER",
@@ -236,6 +237,91 @@ unemployed_applicants_annuity_avg_df = \
 
 unemployed_applicants_annuity_avg_df.\
     to_excel('unemployed_applicants_annuity_avg_pivot_table.xlsx')
+
+# businessman applicants annuity avg pivot table
+businessman_applicants_annuity_avg_df = \
+    pd.pivot_table(application_data_condensed_businessman_applicants_df,
+                                                index= "CODE_GENDER",
+                                                values='AMT_ANNUITY',
+                                                columns='NAME_FAMILY_STATUS',
+                                                aggfunc='mean'
+                                                )
+
+businessman_applicants_annuity_avg_df.\
+    to_excel('businessman_applicants_annuity_avg_pivot_table.xlsx')
+
+# commercial associate applicants annuity avg pivot table
+commercial_associate_applicants_annuity_avg_df = \
+    pd.pivot_table(application_data_condensed_commercial_associate_applicants_df,
+                                                index= "CODE_GENDER",
+                                                values='AMT_ANNUITY',
+                                                columns='NAME_FAMILY_STATUS',
+                                                aggfunc='mean'
+                                                )
+
+commercial_associate_applicants_annuity_avg_df.\
+    to_excel('commercial_associate_applicants_annuity_avg_pivot_table.xlsx')
+
+# maternity leave applicants annuity avg pivot table
+maternity_leave_applicants_annuity_avg_df = \
+    pd.pivot_table(application_data_condensed_maternity_leave_applicants_df,
+                                                index= "CODE_GENDER",
+                                                values='AMT_ANNUITY',
+                                                columns='NAME_FAMILY_STATUS',
+                                                aggfunc='mean'
+                                                )
+
+maternity_leave_applicants_annuity_avg_df.\
+    to_excel('maternity_leave_applicants_annuity_avg_pivot_table.xlsx')
+
+# pensioner applicants annuity avg pivot table
+pensioner_applicants_annuity_avg_df = \
+    pd.pivot_table(application_data_condensed_pensioner_applicants_df,
+                                                index= "CODE_GENDER",
+                                                values='AMT_ANNUITY',
+                                                columns='NAME_FAMILY_STATUS',
+                                                aggfunc='mean'
+                                                )
+
+pensioner_applicants_annuity_avg_df.\
+    to_excel('pensioner_applicants_annuity_avg_pivot_table.xlsx')
+
+# state servant applicants annuity avg pivot table
+state_servant_applicants_annuity_avg_df = \
+    pd.pivot_table(application_data_condensed_state_servant_applicants_df,
+                                                index= "CODE_GENDER",
+                                                values='AMT_ANNUITY',
+                                                columns='NAME_FAMILY_STATUS',
+                                                aggfunc='mean'
+                                                )
+
+state_servant_applicants_annuity_avg_df.\
+    to_excel('state_servant_applicants_annuity_avg_pivot_table.xlsx')
+
+# student applicants annuity avg pivot table
+student_applicants_annuity_avg_df = \
+    pd.pivot_table(application_data_condensed_student_applicants_df,
+                                                index= "CODE_GENDER",
+                                                values='AMT_ANNUITY',
+                                                columns='NAME_FAMILY_STATUS',
+                                                aggfunc='mean'
+                                                )
+
+student_applicants_annuity_avg_df.\
+    to_excel('student_applicants_annuity_avg_pivot_table.xlsx')
+
+# working applicants annuity avg pivot table
+working_applicants_annuity_avg_df = \
+    pd.pivot_table(application_data_condensed_working_applicants_df,
+                                                index= "CODE_GENDER",
+                                                values='AMT_ANNUITY',
+                                                columns='NAME_FAMILY_STATUS',
+                                                aggfunc='mean'
+                                                )
+
+working_applicants_annuity_avg_df.\
+    to_excel('working_applicants_annuity_avg_pivot_table.xlsx')
+
 
 # +===================+
 # charts to be developed here
@@ -269,5 +355,6 @@ application_data_condensed_styled_df = (
     applymap(risk_color, subset=['FRAUD_RISK'])
 )
 
-application_data_condensed_styled_df.to_excel('application_data_condensed_df.xlsx',
+application_data_condensed_styled_df.\
+    to_excel('application_data_condensed_df.xlsx',
                                        index=False)
