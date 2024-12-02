@@ -6,7 +6,6 @@ import plotly.express as px
 import plotly.io as pio
 from warnings import simplefilter # suppresses warning, allows > 100 columns to be created in new dataframe
 simplefilter(action="ignore", category=pd.errors.PerformanceWarning)
-
 application_data_df = pd.read_csv('application_data.csv')
 previous_application_df = pd.read_csv('previous_application.csv')
 
@@ -326,9 +325,13 @@ working_applicants_annuity_avg_df.\
 # +===================+
 # charts to be developed here
 # +===================+
-# columns (keys)
-# column values (values)
-
+file = pd.read_excel('application_data_condensed_unemployed_applicants_df.xlsx')
+x_axis = file['CODE_GENDER']
+y_axis = file['NAME_FAMILY_STATUS']
+plt.bar(x_axis, y_axis, width=5)
+plt.xlabel("CODE_GENDER")
+plt.ylabel("NAME_FAMILY_STATUS")
+plt.show()
 
 
 # +===================+
