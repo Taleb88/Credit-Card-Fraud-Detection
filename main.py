@@ -325,13 +325,14 @@ working_applicants_annuity_avg_df.\
 # +===================+
 # charts to be developed here
 # +===================+
-file = pd.read_excel('application_data_condensed_unemployed_applicants_df.xlsx')
-x_axis = file['CODE_GENDER']
-y_axis = file['NAME_FAMILY_STATUS']
-plt.bar(x_axis, y_axis, width=5)
-plt.xlabel("CODE_GENDER")
-plt.ylabel("NAME_FAMILY_STATUS")
-plt.show()
+application_data_condensed_unemployed_applicants_df.plot.barh(
+    x='SK_ID_CURR',
+    y='AMT_ANNUITY',
+    title='Annuity Amount per Applicant',
+    color='green'
+)
+plt.xlabel('Annuity Amounts')
+plt.show() # produces bar graph
 
 
 # +===================+
