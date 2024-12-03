@@ -221,6 +221,15 @@ application_data_condensed_working_applicants_df.to_excel(
     'application_data_condensed_working_applicants_df.xlsx',
     index=False)
 
+# unemployed with children applicants only
+def unemployed_with_children_applicants(df):
+    return df[(df['NAME_INCOME_TYPE'] == 'Unemployed') & (df['CNT_CHILDREN'] > 0)]
+
+unemployed_with_children_applicants_df = unemployed_with_children_applicants(application_data_df)
+
+unemployed_with_children_applicants_df.to_excel('unemployed_with_children_applicants_df.xlsx',
+                                                index=False)
+
 
 # +===================+
 # pivot tables
