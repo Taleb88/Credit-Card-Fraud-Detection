@@ -334,6 +334,70 @@ application_data_condensed_unemployed_applicants_df.plot.barh(
 plt.xlabel('Annuity Amounts')
 plt.show() # produces bar graph
 
+application_data_condensed_businessman_applicants_df.plot.barh(
+    x='SK_ID_CURR',
+    y='AMT_ANNUITY',
+    title='Annuity Amount per Applicant',
+    color='green'
+)
+plt.xlabel('Annuity Amounts')
+plt.show() # produces bar graph
+'''
+application_data_condensed_commercial_associate_applicants_df.plot.barh(
+    x='SK_ID_CURR',
+    y='AMT_ANNUITY',
+    title='Annuity Amount per Applicant',
+    color='green'
+)
+plt.xlabel('Annuity Amounts')
+plt.show() # bar graph should be produced, but data is too big
+'''
+application_data_condensed_maternity_leave_applicants_df.plot.barh(
+    x='SK_ID_CURR',
+    y='AMT_ANNUITY',
+    title='Annuity Amount per Applicant',
+    color='green'
+)
+plt.xlabel('Annuity Amounts')
+plt.show() # produces bar graph
+'''
+application_data_condensed_pensioner_applicants_df.plot.barh(
+    x='SK_ID_CURR',
+    y='AMT_ANNUITY',
+    title='Annuity Amount per Applicant',
+    color='green'
+)
+plt.xlabel('Annuity Amounts')
+plt.show() # bar graph should be produced, but data is too big
+
+application_data_condensed_state_servant_applicants_df.plot.barh(
+    x='SK_ID_CURR',
+    y='AMT_ANNUITY',
+    title='Annuity Amount per Applicant',
+    color='green'
+)
+plt.xlabel('Annuity Amounts')
+plt.show() # bar graph should be produced, but data is too big
+'''
+application_data_condensed_student_applicants_df.plot.barh(
+    x='SK_ID_CURR',
+    y='AMT_ANNUITY',
+    title='Annuity Amount per Applicant',
+    color='green'
+)
+plt.xlabel('Annuity Amounts')
+plt.show() # produces bar graph
+'''
+application_data_condensed_working_applicants_df.plot.barh(
+    x='SK_ID_CURR',
+    y='AMT_ANNUITY',
+    title='Annuity Amount per Applicant',
+    color='green'
+)
+plt.xlabel('Annuity Amounts')
+plt.show() # bar graph should be produced, but data is too big
+'''
+
 
 # +===================+
 # conditional formatting implemented based on certain conditions
