@@ -230,6 +230,143 @@ unemployed_with_children_applicants_df = unemployed_with_children_applicants(app
 unemployed_with_children_applicants_df.to_excel('unemployed_with_children_applicants_df.xlsx',
                                                 index=False)
 
+# unemployed without children
+def unemployed_without_children_applicants(df):
+    return df[(df['NAME_INCOME_TYPE'] == 'Unemployed') & (df['CNT_CHILDREN'] == 0)]
+
+unemployed_without_children_applicants_df = unemployed_without_children_applicants(application_data_df)
+
+unemployed_without_children_applicants_df.to_excel('unemployed_without_children_applicants_df.xlsx',
+                                                index=False)
+
+# businessman with children applicants only
+def businessman_with_children_applicants(df):
+    return df[(df['NAME_INCOME_TYPE'] == 'Businessman') & (df['CNT_CHILDREN'] > 0)]
+
+businessman_with_children_applicants_df = businessman_with_children_applicants(application_data_df)
+
+businessman_with_children_applicants_df.to_excel('businessman_with_children_applicants_df.xlsx',
+                                                index=False)
+
+# businessman without children
+def businessman_without_children_applicants(df):
+    return df[(df['NAME_INCOME_TYPE'] == 'Businessman') & (df['CNT_CHILDREN'] == 0)]
+
+businessman_without_children_applicants_df = businessman_without_children_applicants(application_data_df)
+
+businessman_without_children_applicants_df.to_excel('businessman_without_children_applicants_df.xlsx',
+                                                index=False)
+
+# commercial associate with children applicants only
+def commercial_associate_with_children_applicants(df):
+    return df[(df['NAME_INCOME_TYPE'] == 'Commercial associate') & (df['CNT_CHILDREN'] > 0)]
+
+commercial_associate_with_children_applicants_df = commercial_associate_with_children_applicants(application_data_df)
+
+commercial_associate_with_children_applicants_df.to_excel('commercial_associate_with_children_applicants_df.xlsx',
+                                                index=False)
+
+# commercial_associate without children
+def commercial_associate_without_children_applicants(df):
+    return df[(df['NAME_INCOME_TYPE'] == 'Commercial associate') & (df['CNT_CHILDREN'] == 0)]
+
+commercial_associate_without_children_applicants_df = commercial_associate_without_children_applicants(application_data_df)
+
+commercial_associate_without_children_applicants_df.to_excel('commercial_associate_without_children_applicants_df.xlsx',
+                                                index=False)
+
+# maternity leave with children applicants only
+def maternity_leave_with_children_applicants(df):
+    return df[(df['NAME_INCOME_TYPE'] == 'Maternity leave') & (df['CNT_CHILDREN'] > 0)]
+
+maternity_leave_with_children_applicants_df = maternity_leave_with_children_applicants(application_data_df)
+
+maternity_leave_with_children_applicants_df.to_excel('maternity_leave_with_children_applicants_df.xlsx',
+                                                index=False)
+
+# maternity_leave without children
+def maternity_leave_without_children_applicants(df):
+    return df[(df['NAME_INCOME_TYPE'] == 'Maternity leave') & (df['CNT_CHILDREN'] == 0)]
+
+maternity_leave_without_children_applicants_df = maternity_leave_without_children_applicants(application_data_df)
+
+maternity_leave_without_children_applicants_df.to_excel('maternity_leave_without_children_applicants_df.xlsx',
+                                                index=False)
+
+# pensioner with children applicants only
+def pensioner_with_children_applicants(df):
+    return df[(df['NAME_INCOME_TYPE'] == 'Pensioner') & (df['CNT_CHILDREN'] > 0)]
+
+pensioner_with_children_applicants_df = pensioner_with_children_applicants(application_data_df)
+
+pensioner_with_children_applicants_df.to_excel('pensioner_with_children_applicants_df.xlsx',
+                                                index=False)
+
+# pensioner without children
+def pensioner_without_children_applicants(df):
+    return df[(df['NAME_INCOME_TYPE'] == 'Pensioner') & (df['CNT_CHILDREN'] == 0)]
+
+pensioner_without_children_applicants_df = pensioner_without_children_applicants(application_data_df)
+
+pensioner_without_children_applicants_df.to_excel('pensioner_without_children_applicants_df.xlsx',
+                                                index=False)
+
+# state servant with children applicants only
+def state_servant_with_children_applicants(df):
+    return df[(df['NAME_INCOME_TYPE'] == 'State servant') & (df['CNT_CHILDREN'] > 0)]
+
+state_servant_with_children_applicants_df = state_servant_with_children_applicants(application_data_df)
+
+state_servant_with_children_applicants_df.to_excel('state_servant_with_children_applicants_df.xlsx',
+                                                index=False)
+
+# state servant without children
+def state_servant_without_children_applicants(df):
+    return df[(df['NAME_INCOME_TYPE'] == 'State servant') & (df['CNT_CHILDREN'] == 0)]
+
+state_servant_without_children_applicants_df = state_servant_without_children_applicants(application_data_df)
+
+state_servant_without_children_applicants_df.to_excel('state_servant_without_children_applicants_df.xlsx',
+                                                index=False)
+
+# student with children applicants only
+def student_with_children_applicants(df):
+    return df[(df['NAME_INCOME_TYPE'] == 'Student') & (df['CNT_CHILDREN'] > 0)]
+
+student_with_children_applicants_df = student_with_children_applicants(application_data_df)
+
+student_with_children_applicants_df.to_excel('student_with_children_applicants_df.xlsx',
+                                                index=False)
+
+# student without children
+def student_without_children_applicants(df):
+    return df[(df['NAME_INCOME_TYPE'] == 'Student') & (df['CNT_CHILDREN'] == 0)]
+
+student_without_children_applicants_df = student_without_children_applicants(application_data_df)
+
+student_without_children_applicants_df.to_excel('student_without_children_applicants_df.xlsx',
+                                                index=False)
+
+# working with children applicants only
+def working_with_children_applicants(df):
+    return df[(df['NAME_INCOME_TYPE'] == 'Working') & (df['CNT_CHILDREN'] > 0)]
+
+working_with_children_applicants_df = working_with_children_applicants(application_data_df)
+
+working_with_children_applicants_df.to_excel('working_with_children_applicants_df.xlsx',
+                                                index=False)
+
+# working without children
+def working_without_children_applicants(df):
+    return df[(df['NAME_INCOME_TYPE'] == 'Working') & (df['CNT_CHILDREN'] == 0)]
+
+working_without_children_applicants_df = working_without_children_applicants(application_data_df)
+
+working_without_children_applicants_df.to_excel('working_without_children_applicants_df.xlsx',
+                                                index=False)
+
+
+
 
 # +===================+
 # pivot tables
