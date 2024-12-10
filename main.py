@@ -97,6 +97,15 @@ application_data_condensed_df['FRAUD_RISK'] = status
 application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
                                        index=False)
 
+'''
+# filling in empty values under own car age
+application_data_condensed_df = (
+    application_data_condensed_df['OWN_CAR_AGE'].replace('', 0))
+
+application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
+                                       index=False)
+'''
+
 # +===================+
 # filtering based on certain conditions
 # +===================+
@@ -223,7 +232,11 @@ application_data_condensed_working_applicants_df.to_excel(
 
 # unemployed with children applicants only
 def unemployed_with_children_applicants(df):
-    return df[(df['NAME_INCOME_TYPE'] == 'Unemployed') & (df['CNT_CHILDREN'] > 0)]
+    try:
+        return df[(df['NAME_INCOME_TYPE'] == 'Unemployed') & (df['CNT_CHILDREN'] > 0)]
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot filter rows')
 
 unemployed_with_children_applicants_df = unemployed_with_children_applicants(application_data_df)
 
@@ -232,7 +245,11 @@ unemployed_with_children_applicants_df.to_excel('unemployed_with_children_applic
 
 # unemployed without children
 def unemployed_without_children_applicants(df):
-    return df[(df['NAME_INCOME_TYPE'] == 'Unemployed') & (df['CNT_CHILDREN'] == 0)]
+    try:
+        return df[(df['NAME_INCOME_TYPE'] == 'Unemployed') & (df['CNT_CHILDREN'] == 0)]
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot filter rows')
 
 unemployed_without_children_applicants_df = unemployed_without_children_applicants(application_data_df)
 
@@ -241,7 +258,11 @@ unemployed_without_children_applicants_df.to_excel('unemployed_without_children_
 
 # businessman with children applicants only
 def businessman_with_children_applicants(df):
-    return df[(df['NAME_INCOME_TYPE'] == 'Businessman') & (df['CNT_CHILDREN'] > 0)]
+    try:    
+        return df[(df['NAME_INCOME_TYPE'] == 'Businessman') & (df['CNT_CHILDREN'] > 0)]
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot filter rows')
 
 businessman_with_children_applicants_df = businessman_with_children_applicants(application_data_df)
 
@@ -250,7 +271,11 @@ businessman_with_children_applicants_df.to_excel('businessman_with_children_appl
 
 # businessman without children
 def businessman_without_children_applicants(df):
-    return df[(df['NAME_INCOME_TYPE'] == 'Businessman') & (df['CNT_CHILDREN'] == 0)]
+    try:
+        return df[(df['NAME_INCOME_TYPE'] == 'Businessman') & (df['CNT_CHILDREN'] == 0)]
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot filter rows')    
 
 businessman_without_children_applicants_df = businessman_without_children_applicants(application_data_df)
 
@@ -259,7 +284,11 @@ businessman_without_children_applicants_df.to_excel('businessman_without_childre
 
 # commercial associate with children applicants only
 def commercial_associate_with_children_applicants(df):
-    return df[(df['NAME_INCOME_TYPE'] == 'Commercial associate') & (df['CNT_CHILDREN'] > 0)]
+    try:    
+        return df[(df['NAME_INCOME_TYPE'] == 'Commercial associate') & (df['CNT_CHILDREN'] > 0)]
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot filter rows')
 
 commercial_associate_with_children_applicants_df = commercial_associate_with_children_applicants(application_data_df)
 
@@ -268,8 +297,12 @@ commercial_associate_with_children_applicants_df.to_excel('commercial_associate_
 
 # commercial_associate without children
 def commercial_associate_without_children_applicants(df):
-    return df[(df['NAME_INCOME_TYPE'] == 'Commercial associate') & (df['CNT_CHILDREN'] == 0)]
-
+    try:
+        return df[(df['NAME_INCOME_TYPE'] == 'Commercial associate') & (df['CNT_CHILDREN'] == 0)]
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot filter rows')
+            
 commercial_associate_without_children_applicants_df = commercial_associate_without_children_applicants(application_data_df)
 
 commercial_associate_without_children_applicants_df.to_excel('commercial_associate_without_children_applicants_df.xlsx',
@@ -277,7 +310,11 @@ commercial_associate_without_children_applicants_df.to_excel('commercial_associa
 
 # maternity leave with children applicants only
 def maternity_leave_with_children_applicants(df):
-    return df[(df['NAME_INCOME_TYPE'] == 'Maternity leave') & (df['CNT_CHILDREN'] > 0)]
+    try:
+        return df[(df['NAME_INCOME_TYPE'] == 'Maternity leave') & (df['CNT_CHILDREN'] > 0)]
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot filter rows')    
 
 maternity_leave_with_children_applicants_df = maternity_leave_with_children_applicants(application_data_df)
 
@@ -286,8 +323,12 @@ maternity_leave_with_children_applicants_df.to_excel('maternity_leave_with_child
 
 # maternity_leave without children
 def maternity_leave_without_children_applicants(df):
-    return df[(df['NAME_INCOME_TYPE'] == 'Maternity leave') & (df['CNT_CHILDREN'] == 0)]
-
+    try:
+        return df[(df['NAME_INCOME_TYPE'] == 'Maternity leave') & (df['CNT_CHILDREN'] == 0)]
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot filter rows')
+        
 maternity_leave_without_children_applicants_df = maternity_leave_without_children_applicants(application_data_df)
 
 maternity_leave_without_children_applicants_df.to_excel('maternity_leave_without_children_applicants_df.xlsx',
@@ -295,7 +336,11 @@ maternity_leave_without_children_applicants_df.to_excel('maternity_leave_without
 
 # pensioner with children applicants only
 def pensioner_with_children_applicants(df):
-    return df[(df['NAME_INCOME_TYPE'] == 'Pensioner') & (df['CNT_CHILDREN'] > 0)]
+    try:    
+        return df[(df['NAME_INCOME_TYPE'] == 'Pensioner') & (df['CNT_CHILDREN'] > 0)]
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot filter rows')
 
 pensioner_with_children_applicants_df = pensioner_with_children_applicants(application_data_df)
 
@@ -304,7 +349,11 @@ pensioner_with_children_applicants_df.to_excel('pensioner_with_children_applican
 
 # pensioner without children
 def pensioner_without_children_applicants(df):
-    return df[(df['NAME_INCOME_TYPE'] == 'Pensioner') & (df['CNT_CHILDREN'] == 0)]
+    try:
+        return df[(df['NAME_INCOME_TYPE'] == 'Pensioner') & (df['CNT_CHILDREN'] == 0)]
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot filter rows')    
 
 pensioner_without_children_applicants_df = pensioner_without_children_applicants(application_data_df)
 
@@ -313,7 +362,11 @@ pensioner_without_children_applicants_df.to_excel('pensioner_without_children_ap
 
 # state servant with children applicants only
 def state_servant_with_children_applicants(df):
-    return df[(df['NAME_INCOME_TYPE'] == 'State servant') & (df['CNT_CHILDREN'] > 0)]
+    try:
+        return df[(df['NAME_INCOME_TYPE'] == 'State servant') & (df['CNT_CHILDREN'] > 0)]
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot filter rows')
 
 state_servant_with_children_applicants_df = state_servant_with_children_applicants(application_data_df)
 
@@ -322,7 +375,11 @@ state_servant_with_children_applicants_df.to_excel('state_servant_with_children_
 
 # state servant without children
 def state_servant_without_children_applicants(df):
-    return df[(df['NAME_INCOME_TYPE'] == 'State servant') & (df['CNT_CHILDREN'] == 0)]
+    try:
+        return df[(df['NAME_INCOME_TYPE'] == 'State servant') & (df['CNT_CHILDREN'] == 0)]
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot filter rows')
 
 state_servant_without_children_applicants_df = state_servant_without_children_applicants(application_data_df)
 
@@ -331,8 +388,12 @@ state_servant_without_children_applicants_df.to_excel('state_servant_without_chi
 
 # student with children applicants only
 def student_with_children_applicants(df):
-    return df[(df['NAME_INCOME_TYPE'] == 'Student') & (df['CNT_CHILDREN'] > 0)]
-
+    try:
+        return df[(df['NAME_INCOME_TYPE'] == 'Student') & (df['CNT_CHILDREN'] > 0)]
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot filter rows')
+    
 student_with_children_applicants_df = student_with_children_applicants(application_data_df)
 
 student_with_children_applicants_df.to_excel('student_with_children_applicants_df.xlsx',
@@ -340,7 +401,11 @@ student_with_children_applicants_df.to_excel('student_with_children_applicants_d
 
 # student without children
 def student_without_children_applicants(df):
-    return df[(df['NAME_INCOME_TYPE'] == 'Student') & (df['CNT_CHILDREN'] == 0)]
+    try:    
+        return df[(df['NAME_INCOME_TYPE'] == 'Student') & (df['CNT_CHILDREN'] == 0)]
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot filter rows')
 
 student_without_children_applicants_df = student_without_children_applicants(application_data_df)
 
@@ -349,7 +414,11 @@ student_without_children_applicants_df.to_excel('student_without_children_applic
 
 # working with children applicants only
 def working_with_children_applicants(df):
-    return df[(df['NAME_INCOME_TYPE'] == 'Working') & (df['CNT_CHILDREN'] > 0)]
+    try:
+        return df[(df['NAME_INCOME_TYPE'] == 'Working') & (df['CNT_CHILDREN'] > 0)]
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot filter rows')    
 
 working_with_children_applicants_df = working_with_children_applicants(application_data_df)
 
@@ -358,14 +427,16 @@ working_with_children_applicants_df.to_excel('working_with_children_applicants_d
 
 # working without children
 def working_without_children_applicants(df):
-    return df[(df['NAME_INCOME_TYPE'] == 'Working') & (df['CNT_CHILDREN'] == 0)]
+    try:
+        return df[(df['NAME_INCOME_TYPE'] == 'Working') & (df['CNT_CHILDREN'] == 0)]
+    except Exception as e:
+        print(f'caught {type(e)}: e \n'
+              f'cannot filter rows')    
 
 working_without_children_applicants_df = working_without_children_applicants(application_data_df)
 
 working_without_children_applicants_df.to_excel('working_without_children_applicants_df.xlsx',
                                                 index=False)
-
-
 
 
 # +===================+
