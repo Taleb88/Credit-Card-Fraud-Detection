@@ -542,6 +542,7 @@ working_applicants_annuity_avg_df.\
 # +===================+
 # charts to be developed here
 # +===================+
+
 application_data_condensed_unemployed_applicants_df.plot.barh(
     x='SK_ID_CURR',
     y='AMT_ANNUITY',
@@ -619,6 +620,8 @@ plt.show() # bar graph should be produced, but data is too big
 # +===================+
 # conditional formatting implemented based on certain conditions
 # +===================+
+
+# background color of fraud risk based on level
 def risk_color(risk_level):
     try:
         if risk_level == 'High Risk':
@@ -643,3 +646,36 @@ application_data_condensed_styled_df = (
 application_data_condensed_styled_df.\
     to_excel('application_data_condensed_df.xlsx',
                                        index=False)
+
+
+# +===================+
+# merging certain datasets
+# +===================+
+
+#merge student applicants + unemployed applicants based on day/time
+student_and_unemployed_applicants_merge_df = pd.merge(
+    application_data_condensed_student_applicants_df, 
+    application_data_condensed_unemployed_applicants_df,
+    on=['WEEKDAY_APPR_PROCESS_START', 'HOUR_APPR_PROCESS_START'] #   
+)
+
+student_and_unemployed_applicants_merge_df.\
+    to_excel('student_and_unemployed_applicants_merge_df.xlsx', 
+             index=False)
+
+def highlight_weekday_and_hour(self):
+    try:
+        return 'background-color: yellow'
+    except:
+        print('Error - Cannot fill in background color of cells')
+
+student_and_unemployed_applicants_merge_styled_df = (
+    student_and_unemployed_applicants_merge_df.
+    style.
+    applymap(highlight_weekday_and_hour, subset=['WEEKDAY_APPR_PROCESS_START',
+                                 'HOUR_APPR_PROCESS_START'])
+)
+
+student_and_unemployed_applicants_merge_styled_df.\
+    to_excel('student_and_unemployed_applicants_merge_styled_df.xlsx', 
+             index=False)
