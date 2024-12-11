@@ -70,7 +70,7 @@ application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
 
 # +===================+
 # if NAME_INCOME_TYPE is of a certain value, the applicant would be
-#   classified as low risk or high risk
+#   classified as low risk, medium risk, or high risk
 # +===================+
 status = [] # array reps col values, initially empty but filled in once conditions are met below
 for x in application_data_condensed_df['NAME_INCOME_TYPE']:
@@ -679,3 +679,4 @@ student_and_unemployed_applicants_merge_styled_df = (
 student_and_unemployed_applicants_merge_styled_df.\
     to_excel('student_and_unemployed_applicants_merge_styled_df.xlsx', 
              index=False)
+
