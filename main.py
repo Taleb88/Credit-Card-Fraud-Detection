@@ -62,6 +62,56 @@ application_data_condensed_df['ORGANIZATION_TYPE'] = organization_type.copy()
 (application_data_condensed_df.
  to_excel('application_data_condensed_df.xlsx', index=False))
 
+
+# creating new WEEKEND_APPR_PROCESS_START column in application_data_condensed_df
+application_data_condensed_df['WEEKEND_APPR_PROCESS_START'] = \
+    application_data_condensed_df['WEEKDAY_APPR_PROCESS_START'].copy()
+
+application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
+                                       index=False)
+# replacing non-weekday values in the WEEKDAY_APPR_PROCESS_START column with 'N/A'
+application_data_condensed_df.\
+    loc[application_data_condensed_df['WEEKDAY_APPR_PROCESS_START'] == "SATURDAY", 'WEEKDAY_APPR_PROCESS_START'] = 'N/A'
+
+application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
+                                       index=False)
+application_data_condensed_df.\
+    loc[application_data_condensed_df['WEEKDAY_APPR_PROCESS_START'] == "SUNDAY", 'WEEKDAY_APPR_PROCESS_START'] = 'N/A'
+
+application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
+                                       index=False)
+# replacing weekday values in the WEEKEND_APPR_PROCESS_START column with 'N/A'
+application_data_condensed_df.\
+    loc[application_data_condensed_df['WEEKEND_APPR_PROCESS_START'] == "MONDAY", 'WEEKEND_APPR_PROCESS_START'] = 'N/A'
+
+application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
+                                       index=False)
+
+application_data_condensed_df.\
+    loc[application_data_condensed_df['WEEKEND_APPR_PROCESS_START'] == "TUESDAY", 'WEEKEND_APPR_PROCESS_START'] = 'N/A'
+
+application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
+                                       index=False)
+
+application_data_condensed_df.\
+    loc[application_data_condensed_df['WEEKEND_APPR_PROCESS_START'] == "WEDNESDAY", 'WEEKEND_APPR_PROCESS_START'] = 'N/A'
+
+application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
+                                       index=False)
+
+application_data_condensed_df.\
+    loc[application_data_condensed_df['WEEKEND_APPR_PROCESS_START'] == "THURSDAY", 'WEEKEND_APPR_PROCESS_START'] = 'N/A'
+
+application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
+                                       index=False)
+
+application_data_condensed_df.\
+    loc[application_data_condensed_df['WEEKEND_APPR_PROCESS_START'] == "FRIDAY", 'WEEKEND_APPR_PROCESS_START'] = 'N/A'
+
+application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
+                                       index=False)
+
+
 # creating a new column based on income status per applicant in application_data_condensed_df
 application_data_condensed_df['FRAUD_RISK'] = [''] * len(application_data_condensed_df)
 
