@@ -71,42 +71,42 @@ application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
                                        index=False)
 # replacing non-weekday values in the WEEKDAY_APPR_PROCESS_START column with 'N/A'
 application_data_condensed_df.\
-    loc[application_data_condensed_df['WEEKDAY_APPR_PROCESS_START'] == "SATURDAY", 'WEEKDAY_APPR_PROCESS_START'] = 'N/A'
+    loc[application_data_condensed_df['WEEKDAY_APPR_PROCESS_START'] == "SATURDAY", 'WEEKDAY_APPR_PROCESS_START'] = '-'
 
 application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
                                        index=False)
 application_data_condensed_df.\
-    loc[application_data_condensed_df['WEEKDAY_APPR_PROCESS_START'] == "SUNDAY", 'WEEKDAY_APPR_PROCESS_START'] = 'N/A'
+    loc[application_data_condensed_df['WEEKDAY_APPR_PROCESS_START'] == "SUNDAY", 'WEEKDAY_APPR_PROCESS_START'] = '-'
 
 application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
                                        index=False)
 # replacing weekday values in the WEEKEND_APPR_PROCESS_START column with 'N/A'
 application_data_condensed_df.\
-    loc[application_data_condensed_df['WEEKEND_APPR_PROCESS_START'] == "MONDAY", 'WEEKEND_APPR_PROCESS_START'] = 'N/A'
+    loc[application_data_condensed_df['WEEKEND_APPR_PROCESS_START'] == "MONDAY", 'WEEKEND_APPR_PROCESS_START'] = '-'
 
 application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
                                        index=False)
 
 application_data_condensed_df.\
-    loc[application_data_condensed_df['WEEKEND_APPR_PROCESS_START'] == "TUESDAY", 'WEEKEND_APPR_PROCESS_START'] = 'N/A'
+    loc[application_data_condensed_df['WEEKEND_APPR_PROCESS_START'] == "TUESDAY", 'WEEKEND_APPR_PROCESS_START'] = '-'
 
 application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
                                        index=False)
 
 application_data_condensed_df.\
-    loc[application_data_condensed_df['WEEKEND_APPR_PROCESS_START'] == "WEDNESDAY", 'WEEKEND_APPR_PROCESS_START'] = 'N/A'
+    loc[application_data_condensed_df['WEEKEND_APPR_PROCESS_START'] == "WEDNESDAY", 'WEEKEND_APPR_PROCESS_START'] = '-'
 
 application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
                                        index=False)
 
 application_data_condensed_df.\
-    loc[application_data_condensed_df['WEEKEND_APPR_PROCESS_START'] == "THURSDAY", 'WEEKEND_APPR_PROCESS_START'] = 'N/A'
+    loc[application_data_condensed_df['WEEKEND_APPR_PROCESS_START'] == "THURSDAY", 'WEEKEND_APPR_PROCESS_START'] = '-'
 
 application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
                                        index=False)
 
 application_data_condensed_df.\
-    loc[application_data_condensed_df['WEEKEND_APPR_PROCESS_START'] == "FRIDAY", 'WEEKEND_APPR_PROCESS_START'] = 'N/A'
+    loc[application_data_condensed_df['WEEKEND_APPR_PROCESS_START'] == "FRIDAY", 'WEEKEND_APPR_PROCESS_START'] = '-'
 
 application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
                                        index=False)
@@ -691,6 +691,28 @@ application_data_condensed_styled_df = (
     application_data_condensed_df.
     style.
     applymap(risk_color, subset=['FRAUD_RISK'])
+)
+
+application_data_condensed_styled_df.\
+    to_excel('application_data_condensed_df.xlsx',
+                                       index=False)
+
+# background color of cells containing 'N/A' = black
+def na_color(cell_value):
+    try:
+        if cell_value == 'N/A':
+            return 'background-color: black'
+        else:
+            return 'background-color: #FFFFFF'
+    except:
+        print('Error - Cannot fill in background color of cells')
+
+application_data_condensed_styled_df = (
+    application_data_condensed_df.
+    style.
+    applymap(na_color, 
+             subset=['WEEKDAY_APPR_PROCESS_START', 
+                     'WEEKEND_APPR_PROCESS_START'])
 )
 
 application_data_condensed_styled_df.\
