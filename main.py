@@ -672,16 +672,19 @@ plt.show() # bar graph should be produced, but data is too big
 # +===================+
 
 # background color of fraud risk based on level
-def risk_color(risk_level):
+#   background color of weekday/weekend cells containing 'N/A' value = black
+def color(x):
     try:
-        if risk_level == 'High Risk':
+        if x == 'High Risk':
             return ('background-color: red; '
                     'font-weight: bold; '
                     'color: black')
-        elif risk_level == 'Medium Risk':
+        elif x == 'Medium Risk':
             return 'background-color: yellow'
-        elif risk_level == 'Low Risk':
+        elif x == 'Low Risk':
             return 'background-color: #00FF7F'
+        elif x == 'N/A':
+            return 'background-color: black'
         else:
             return 'background-color: #FFFFFF'
     except:
@@ -690,15 +693,14 @@ def risk_color(risk_level):
 application_data_condensed_styled_df = (
     application_data_condensed_df.
     style.
-    applymap(risk_color, subset=['FRAUD_RISK'])
+    applymap(color, subset=['FRAUD_RISK','WEEKDAY_APPR_PROCESS_START','WEEKEND_APPR_PROCESS_START'])
 )
 
 application_data_condensed_styled_df.\
     to_excel('application_data_condensed_df.xlsx',
                                        index=False)
 
-# background color of cells containing 'N/A' = black
-def na_color(cell_value):
+'''def na_color(cell_value):
     try:
         if cell_value == 'N/A':
             return 'background-color: black'
@@ -717,7 +719,7 @@ application_data_condensed_styled_df = (
 
 application_data_condensed_styled_df.\
     to_excel('application_data_condensed_df.xlsx',
-                                       index=False)
+                                       index=False)'''
 
 
 # +===================+
