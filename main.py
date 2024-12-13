@@ -6,6 +6,7 @@ import plotly.express as px
 import plotly.io as pio
 from warnings import simplefilter # suppresses warning, allows > 100 columns to be created in new dataframe
 simplefilter(action="ignore", category=pd.errors.PerformanceWarning)
+
 application_data_df = pd.read_csv('application_data.csv')
 previous_application_df = pd.read_csv('previous_application.csv')
 
@@ -62,6 +63,12 @@ application_data_condensed_df['ORGANIZATION_TYPE'] = organization_type.copy()
 (application_data_condensed_df.
  to_excel('application_data_condensed_df.xlsx', index=False))
 
+# converting values under HOUR_APPR_PROCESS_START column to time format
+application_data_condensed_df['HOUR_APPR_PROCESS_START'] = \
+    application_data_condensed_df['HOUR_APPR_PROCESS_START'].astype(str) + ':00:00'
+
+(application_data_condensed_df.
+ to_excel('application_data_condensed_df.xlsx', index=False))
 
 # creating new WEEKEND_APPR_PROCESS_START column in application_data_condensed_df
 application_data_condensed_df['WEEKEND_APPR_PROCESS_START'] = \
