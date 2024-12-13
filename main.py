@@ -683,10 +683,8 @@ def color(x):
             return 'background-color: yellow'
         elif x == 'Low Risk':
             return 'background-color: #00FF7F'
-        elif x == 'N/A':
+        elif x == '-':
             return 'background-color: black'
-        else:
-            return 'background-color: #FFFFFF'
     except:
         print('Error - Cannot fill in background color of cells')
 
