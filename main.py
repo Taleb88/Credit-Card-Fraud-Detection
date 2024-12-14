@@ -59,7 +59,6 @@ application_data_condensed_df['HOUR_APPR_PROCESS_START'] = hour_approval_process
 organization_type = application_data_df.iloc[:,40]
 application_data_condensed_df['ORGANIZATION_TYPE'] = organization_type.copy()
 
-
 (application_data_condensed_df.
  to_excel('application_data_condensed_df.xlsx', index=False))
 
@@ -70,12 +69,38 @@ application_data_condensed_df['HOUR_APPR_PROCESS_START'] = \
 (application_data_condensed_df.
  to_excel('application_data_condensed_df.xlsx', index=False))
 
+# adding 0 to the beginning of the HOUR_APPR_PROCESS_START values that range from 0:00:00 to 9:00:00
+application_data_condensed_df['HOUR_APPR_PROCESS_START'] = \
+    application_data_condensed_df['HOUR_APPR_PROCESS_START'].replace('0:00:00', '00:00:00')
+application_data_condensed_df['HOUR_APPR_PROCESS_START'] = \
+    application_data_condensed_df['HOUR_APPR_PROCESS_START'].replace('1:00:00', '01:00:00')
+application_data_condensed_df['HOUR_APPR_PROCESS_START'] = \
+    application_data_condensed_df['HOUR_APPR_PROCESS_START'].replace('2:00:00', '02:00:00')
+application_data_condensed_df['HOUR_APPR_PROCESS_START'] = \
+    application_data_condensed_df['HOUR_APPR_PROCESS_START'].replace('3:00:00', '03:00:00')
+application_data_condensed_df['HOUR_APPR_PROCESS_START'] = \
+    application_data_condensed_df['HOUR_APPR_PROCESS_START'].replace('4:00:00', '04:00:00')
+application_data_condensed_df['HOUR_APPR_PROCESS_START'] = \
+    application_data_condensed_df['HOUR_APPR_PROCESS_START'].replace('5:00:00', '05:00:00')
+application_data_condensed_df['HOUR_APPR_PROCESS_START'] = \
+    application_data_condensed_df['HOUR_APPR_PROCESS_START'].replace('6:00:00', '06:00:00')
+application_data_condensed_df['HOUR_APPR_PROCESS_START'] = \
+    application_data_condensed_df['HOUR_APPR_PROCESS_START'].replace('7:00:00', '07:00:00')
+application_data_condensed_df['HOUR_APPR_PROCESS_START'] = \
+    application_data_condensed_df['HOUR_APPR_PROCESS_START'].replace('8:00:00', '08:00:00')
+application_data_condensed_df['HOUR_APPR_PROCESS_START'] = \
+    application_data_condensed_df['HOUR_APPR_PROCESS_START'].replace('9:00:00', '09:00:00')
+
+(application_data_condensed_df.
+ to_excel('application_data_condensed_df.xlsx', index=False))
+
 # creating new WEEKEND_APPR_PROCESS_START column in application_data_condensed_df
 application_data_condensed_df['WEEKEND_APPR_PROCESS_START'] = \
     application_data_condensed_df['WEEKDAY_APPR_PROCESS_START'].copy()
 
 application_data_condensed_df.to_excel('application_data_condensed_df.xlsx',
                                        index=False)
+
 # replacing non-weekday values in the WEEKDAY_APPR_PROCESS_START column with 'N/A'
 application_data_condensed_df.\
     loc[application_data_condensed_df['WEEKDAY_APPR_PROCESS_START'] == "SATURDAY", 'WEEKDAY_APPR_PROCESS_START'] = '-'
@@ -704,27 +729,6 @@ application_data_condensed_styled_df = (
 application_data_condensed_styled_df.\
     to_excel('application_data_condensed_df.xlsx',
                                        index=False)
-
-'''def na_color(cell_value):
-    try:
-        if cell_value == 'N/A':
-            return 'background-color: black'
-        else:
-            return 'background-color: #FFFFFF'
-    except:
-        print('Error - Cannot fill in background color of cells')
-
-application_data_condensed_styled_df = (
-    application_data_condensed_df.
-    style.
-    applymap(na_color, 
-             subset=['WEEKDAY_APPR_PROCESS_START', 
-                     'WEEKEND_APPR_PROCESS_START'])
-)
-
-application_data_condensed_styled_df.\
-    to_excel('application_data_condensed_df.xlsx',
-                                       index=False)'''
 
 
 # +===================+
